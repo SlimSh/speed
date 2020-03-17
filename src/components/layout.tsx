@@ -49,24 +49,25 @@ const TemplateWrapper = ({ children }) => {
           />
           <div className="container__sidebar">
             <div className="sidebar">
-              <h6 className="sidebar__title">
-                <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
-              </h6>
-              <div
-                className="sidebar__intro"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    data.datoCmsHome.introTextNode.childMarkdownRemark.html
-                }}
-              />
-              <ul className="sidebar__menu">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
-                </li>
-              </ul>
+              <div className='sidebar__top'>
+                <h6 className="sidebar__title">
+                  <Link to="/">{data.datoCmsSite.globalSeo.siteName}</Link>
+                </h6>
+                <ul className="sidebar__menu">
+                  <li>
+                    <Link to="/">Онлайн заказ</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">Услуги</Link>
+                  </li>
+                  <li>
+                    <Link to="/master">Мастерская</Link>
+                  </li>
+                  <li>
+                    <Link to="/contacts">Контакты</Link>
+                  </li>
+                </ul>
+              </div>
               <p className="sidebar__social">
                 {data.allDatoCmsSocialProfile.edges.map(({ node: profile }) => (
                   <a
@@ -79,6 +80,14 @@ const TemplateWrapper = ({ children }) => {
                   </a>
                 ))}
               </p>
+
+              <div
+                className="sidebar__intro"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    data.datoCmsHome.introTextNode.childMarkdownRemark.html
+                }}
+              />
               <div className="sidebar__copyright">
                 {data.datoCmsHome.copyright}
               </div>

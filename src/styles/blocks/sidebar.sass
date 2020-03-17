@@ -1,3 +1,6 @@
+.sidebar__top
+  display: flex
+  justify-content: space-between
 .sidebar__title
   margin-bottom: 20px
 
@@ -24,8 +27,10 @@
 
 .sidebar__menu
   margin-bottom: 20px
-
+  display: flex
+  flex-direction: row
   li
+    margin-right: 10px
     a
       text-decoration: none
       display: block
@@ -60,3 +65,9 @@
 .sidebar__copyright
   color: $light-body-color
   font-size: 13px
+
+@media screen and (max-width: 899px)
+  .sidebar__top
+    flex-direction: column
+  .sidebar__menu
+    flex-direction: column
