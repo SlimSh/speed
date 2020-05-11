@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { StaticQuery, graphql } from "gatsby";
 import { HelmetDatoCms } from "gatsby-source-datocms";
+import MyLink from '../components/UI/Link/index';
 
 import "../styles/index.sass";
 
@@ -55,16 +56,16 @@ const TemplateWrapper = ({ children }) => {
                 </h6>
                 <ul className="sidebar__menu">
                   <li>
-                    <Link to="/">Онлайн заказ</Link>
+                    <Link to="/"><MyLink text={'Онлайн заказ'} /></Link>
                   </li>
                   <li>
-                    <Link to="/about">Услуги</Link>
+                    <Link to="/about"><MyLink text={'Услуги'} /></Link>
                   </li>
                   <li>
-                    <Link to="/master">Мастерская</Link>
+                    <Link to="/master"><MyLink text={'Мастерская'} /></Link>
                   </li>
                   <li>
-                    <Link to="/contacts">Контакты</Link>
+                    <Link to="/contacts"><MyLink text={'Контакты'} /></Link>
                   </li>
                 </ul>
               </div>
@@ -80,17 +81,6 @@ const TemplateWrapper = ({ children }) => {
                   </a>
                 ))}
               </p>
-
-              <div
-                className="sidebar__intro"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    data.datoCmsHome.introTextNode.childMarkdownRemark.html
-                }}
-              />
-              <div className="sidebar__copyright">
-                {data.datoCmsHome.copyright}
-              </div>
             </div>
           </div>
           <div className="container__body">
@@ -112,6 +102,16 @@ const TemplateWrapper = ({ children }) => {
             </div>
             {children}
           </div>
+          <div className="footer">            <div
+            className="sidebar__intro"
+            dangerouslySetInnerHTML={{
+              __html:
+                data.datoCmsHome.introTextNode.childMarkdownRemark.html
+            }}
+          />
+            <div className="sidebar__copyright">
+              {data.datoCmsHome.copyright}
+            </div></div>
         </div>
       )}
     />

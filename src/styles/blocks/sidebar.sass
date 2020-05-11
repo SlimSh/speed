@@ -31,6 +31,7 @@
   flex-direction: row
   li
     margin-right: 10px
+    margin-left: 10px
     a
       text-decoration: none
       display: block
@@ -43,17 +44,25 @@
         position: absolute
         left: 0
         top: 50%
-        margin-top: -6px
+        // margin-top: -6px
         height: 12px
         width: 12px
-        background: url('https://cdn.rawgit.com/encharm/Font-Awesome-SVG-PNG/master/black/svg/chevron-right.svg')
+        // background: url('https://image.flaticon.com/icons/svg/594/594409.svg')     
+        border-radius: 50% 50% 50% 0px;
+        background: #e0e0e0
         background-position: 50% 50%
         background-repeat: no-repeat
         background-size: contain
         opacity: 0.6
+        transition: all .5s
 
       &:hover
         color: $active-color
+
+        &::before
+          background: $active-color
+          opacity: 1
+          border-radius: 50% 50% 0px 50%;
 
     &.is-active a
       font-weight: bold
@@ -61,6 +70,10 @@
 
 .sidebar__social
   margin-bottom: 20px
+  width: 195px
+  display: flex
+  justify-content: space-between
+  margin-left: auto
 
 .sidebar__copyright
   color: $light-body-color

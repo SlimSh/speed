@@ -2,10 +2,15 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
-import Layout from "../components/layout"
+import DefaultLayout from "../templates/default"
+import ServicesModule from '../components/services';
+import services from '../mocks/services';
+import Why from '../components/Why/Why';
 
 const IndexPage = ({ data }) => (
-  <Layout>
+  <DefaultLayout>
+    <ServicesModule services={services} />
+    <Why />
     <Masonry className="showcase">
       {data.allDatoCmsWork.edges.map(({ node: work }) => (
         <div key={work.id} className="showcase__item">
@@ -25,7 +30,7 @@ const IndexPage = ({ data }) => (
         </div>
       ))}
     </Masonry>
-  </Layout>
+  </DefaultLayout>
 )
 
 export default IndexPage
