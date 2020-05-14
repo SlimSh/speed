@@ -1,3 +1,12 @@
+.containter__top__slider
+  background: url('/static/images/top.png') no-repeat top center
+  background-size: 100%
+  background-color: $light-bg-color
+  background-blend-mode: luminosity
+  padding-bottom: 100px
+  
+  .container__sidebar
+    background: linear-gradient(180deg, black -25%, rgba(255, 255, 255, 0) 100%)
 @media screen and (max-width: 899px)
   .container__sidebar
     box-sizing: border-box
@@ -12,7 +21,6 @@
     transform: translate3d(-200px, 0, 0)
     transition: transform 0.2s ease-in-out
     padding: 20px
-    background-color: $light-bg-color
 
     .container.is-open &
       transform: translate3d(0px, 0, 0)
@@ -39,7 +47,6 @@
     min-width: 320px
     box-sizing: border-box
     padding: 40px
-    background-color: $light-bg-color
 
   .container__body
     flex: 1

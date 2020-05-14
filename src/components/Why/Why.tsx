@@ -1,63 +1,57 @@
-import React from 'react';
-import ItemWhy, { IItem } from './Item';
+import React from "react";
+import ItemWhy, { IItem } from "./Item";
+const style = require("./style.scss");
 
 interface IProps {
-  items: IItem[]
+  list: IItem[];
 }
 
 interface IState {
   active: number;
 }
 
-const items = [
-  {
-    id: 1,
-    title: 'Не боимся сложностей',
-    description: 'Мы вообще не боимся сложностей',
-    image: 'https://www.spreadshirt.fr/blog/files/2016/03/blog_typo-trends_fr.jpg'
-  }, {
-    id: 2,
-    title: 'Не боимся легкостей',
-    description: 'Мы вообще не боимся сложностей',
-    image: 'https://www.spreadshirt.fr/blog/files/2016/03/blog_typo-trends_fr.jpg'
-  }, {
-    id: 3,
-    title: 'Очень оперативные',
-    description: 'Мы вообще не боимся сложностей',
-    image: 'https://www.spreadshirt.fr/blog/files/2016/03/blog_typo-trends_fr.jpg'
-  },
-]
+const title = "Почему мы?";
 
-const title = 'Почему мы?'
-
-export default class Why extends React.Component<{}, IState> {
+export default class Why extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      active: items[0].id
-    }
+      active: this.props.list[0].id,
+    };
   }
 
   public render() {
-    const active = items.find(item => item.id === this.state.active);
+    const active = this.props.list.find(
+      (item) => item.id === this.state.active
+    );
     return (
-      <div className={'component-why-wrapper'}>
-        <h2>{title}</h2>
-        <div className={'component-why-wrapper-mid'}>
-          {active ? <ItemWhy {...active} /> : null}
-          {items.map(this.renderMap)}
+      <div className={"component-why-wrapper"}>
+        <div className={style.header}>
+          <h2>{title}</h2>
+        </div>
+        <div className={style.content}>
+          <div className={style.item}>
+            {active ? <ItemWhy {...active} /> : null}
+          </div>
+          <div className={style.list}>
+            {this.props.list.map(this.renderMap)}
+          </div>
+          <div className={style.id}>{active?.id}</div>
         </div>
       </div>
-    )
+    );
   }
 
   private renderMap = ({ id }: IItem) => {
     return (
-      <div onClick={this.handleActive(id)}> {id}</div>
-    )
-  }
+      <div
+        onClick={this.handleActive(id)}
+        className={`${style.dotted} ${this.state.active === id &&
+          style.active}`}
+      />
+    );
+  };
   public handleActive = (id: number) => () => {
-    this.setState({ active: id })
-  }
-
+    this.setState({ active: id });
+  };
 }

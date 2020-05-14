@@ -29,14 +29,14 @@
   margin-bottom: 20px
   display: flex
   flex-direction: row
+  font-family: 'Acrom'
   li
-    margin-right: 10px
-    margin-left: 10px
+    margin-left: 40px
     a
       text-decoration: none
       display: block
       padding-left: 20px
-      color: $base-body-color
+      color: $side-bar-link
       position: relative
 
       &:before
@@ -57,16 +57,16 @@
         transition: all .5s
 
       &:hover
-        color: $active-color
+        color: $side-bar-link-active
 
         &::before
-          background: $active-color
+          background: $side-bar-link-active
           opacity: 1
           border-radius: 50% 50% 0px 50%;
 
     &.is-active a
       font-weight: bold
-      color: $active-color
+      color: $side-bar-link-active
 
 .sidebar__social
   margin-bottom: 20px

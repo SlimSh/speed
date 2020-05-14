@@ -3,14 +3,14 @@ import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
 import DefaultLayout from "../templates/default"
-import ServicesModule from '../components/services';
+import ServicesModule from '../components/Services';
 import services from '../mocks/services';
 import Why from '../components/Why/Why';
 
 const IndexPage = ({ data }) => (
   <DefaultLayout>
     <ServicesModule services={services} />
-    <Why />
+    <Why list={data.datoCmsHome.why}/>
     <Masonry className="showcase">
       {data.allDatoCmsWork.edges.map(({ node: work }) => (
         <div key={work.id} className="showcase__item">
@@ -51,6 +51,9 @@ export const query = graphql`
           }
         }
       }
+    }
+    datoCmsHome {
+      why
     }
   }
 `

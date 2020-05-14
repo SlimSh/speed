@@ -5,12 +5,18 @@
   padding: 0px 20px
   max-width: 1400px
   margin: 0 auto
+  @media only screen and (max-width: 900px) 
+    flex-direction: column;
+
 
 .service_block
   position: relative
   width: 300px
   height: 400px
   cursor: pointer
+  @media only screen and (max-width: 900px) 
+    width: 100%
+    margin-bottom: 50px
   &--overflow
     overflow: hidden
     position: relative;
@@ -38,7 +44,7 @@
       
   &--title
     width: 60%
-    height: calc(100% - 60px)
+    height: calc(100% - 260px)
     background: rgb(2,0,36)
     background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(#791526,1) 75%, rgba(74,9,5,1) 100%)
     z-index: 1
@@ -50,6 +56,8 @@
     top: 0px
     text-transform: uppercase
     font-size: 18px
+    font-family: 'Acrom'
+    padding-top: 25px
     
     &::after, &::before
       position: absolute
