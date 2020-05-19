@@ -68,7 +68,7 @@ const TemplateWrapper = ({ children }) => {
             favicon={data.datoCmsSite.faviconMetaTags}
             seo={data.datoCmsHome.seoMetaTags}
           />
-          <div className="containter__top__slider">
+          <div className={`containter__top__slider containter__top__slider--${location.pathname.split('/')[1] || 'index'}`}>
             <div className="container__sidebar">
               <div className="sidebar">
                 <div className="sidebar__top">
@@ -84,7 +84,7 @@ const TemplateWrapper = ({ children }) => {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/about">
+                      <Link to="/services">
                         <MyLink text={"Услуги"} />
                       </Link>
                     </li>
@@ -116,7 +116,7 @@ const TemplateWrapper = ({ children }) => {
                 </p>
               </div>
             </div>
-            <TopBlock text={data.datoCmsHome.topBlock} />
+            {location.pathname === '/' && <TopBlock text={data.datoCmsHome.topBlock} />}
           </div>
 
           <div className="container__body">{children}</div>
