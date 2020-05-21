@@ -41,7 +41,7 @@ export default About;
 export const query = graphql`
   query ServicesList {
     __typename
-    allDatoCmsService(sort: {fields: title}) {
+    allDatoCmsService(filter: {show: {eq: true}}) {
       nodes {
         id
         list
@@ -52,7 +52,7 @@ export const query = graphql`
         }
       }
     }
-    allDatoCmsProduct(sort: {fields: title}) {
+    allDatoCmsProduct(filter: {show: {eq: true}}) {
       nodes {
         id
         list

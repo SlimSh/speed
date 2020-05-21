@@ -14,7 +14,9 @@ class LocationService {
   public getCssPrefix = () => {
     let prefix = 'index';
     if (this.location?.pathname) {
-      return this.location.pathname.split('/')[1] || prefix;
+      const paths = this.location.pathname.split('/');
+      console.warn('GET CSS PREFIX', paths)
+      return paths.length > 3 ? 'post' : paths[1] || prefix;
     }
     return prefix;
   };
