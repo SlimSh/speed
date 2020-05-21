@@ -4,8 +4,12 @@ import { HelmetDatoCms } from 'gatsby-source-datocms';
 import Img from 'gatsby-image';
 import { graphql } from 'gatsby';
 import DefaultLayout from "../templates/default"
+import LocationService from '../utils/locations';
 
-export default ({ data }) => (
+export default ({ data, location }) =>{ 
+  LocationService.location = location;
+  return (
+  
   <DefaultLayout>
     <article className="sheet">
       <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
@@ -31,7 +35,7 @@ export default ({ data }) => (
       </div>
     </article>
   </DefaultLayout>
-)
+)}
 
 export const query = graphql`
   query WorkQuery($slug: String!) {

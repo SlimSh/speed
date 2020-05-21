@@ -14,6 +14,20 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+        allDatoCmsService {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+        allDatoCmsProduct {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
       }
     `).then(result => {
       result.data.allDatoCmsWork.edges.map(({ node: work }) => {
@@ -25,6 +39,24 @@ exports.createPages = ({ graphql, actions }) => {
           },
         })
       })
+      result.data.allDatoCmsService.edges.map(({ node: service }) => {
+        createPage({
+          path: `services/${service.slug}`,
+          component: path.resolve(`./src/templates/service.js`),
+          context: {
+            slug: service.slug,
+          },
+        })
+      })
+      // result.data.allDatoCmsProduct.edges.map(({ node: product }) => {
+      //   createPage({
+      //     path: `products/${product.slug}`,
+      //     component: path.resolve(`./src/templates/service.js`),
+      //     context: {
+      //       slug: product.slug,
+      //     },
+      //   })
+      // })
       resolve()
     })
   })

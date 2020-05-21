@@ -1,42 +1,76 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Img from 'gatsby-image'
-import DefaultLayout from "../templates/default"
+import React from 'react';
+import {graphql} from 'gatsby';
+import {HelmetDatoCms} from 'gatsby-source-datocms';
+import Img from 'gatsby-image';
+import DefaultLayout from '../templates/default';
+import Card from '../components/UI/Card';
+import ServicesList from '../components/ServicesList';
+import LocationService from '../utils/locations';
 
-const About = ({ data: { about } }) => (
-  <DefaultLayout>
-    <article className="sheet">
-      <HelmetDatoCms seo={about.seoMetaTags} />
-      <div className="sheet__inner">
-        <h1 className="sheet__title">{about.title}</h1>
-        <p className="sheet__lead">{about.subtitle}</p>
-        <div className="sheet__gallery">
-          <Img fluid={about.photo.fluid} />
+const About = ({
+  location,
+  data: {allDatoCmsService: services, allDatoCmsProduct: products, datoCmsAboutPage: about}
+}: any) => {
+  LocationService.location = location;
+  return (
+    <DefaultLayout>
+      <ServicesList list={services.nodes} title={'Услуги'} theme={'dark'} />
+      <ServicesList list={products.nodes} title={'Наша продукция'} theme={'light'} />
+      <article className='sheet'>
+        <HelmetDatoCms seo={about.seoMetaTags} />
+        <div className='sheet__inner'>
+          <h1 className='sheet__title'>{about.title}</h1>
+          <p className='sheet__lead'>{about.subtitle}</p>
+          <div className='sheet__gallery'>
+            <Img fluid={about.photo.fluid} />
+          </div>
+          <div
+            className='sheet__body'
+            dangerouslySetInnerHTML={{
+              __html: about.bioNode.childMarkdownRemark.html
+            }}
+          />
         </div>
-        <div
-          className="sheet__body"
-          dangerouslySetInnerHTML={{
-            __html: about.bioNode.childMarkdownRemark.html,
-          }}
-        />
-      </div>
-    </article>
-  </DefaultLayout>
-)
+      </article>
+    </DefaultLayout>
+  );
+};
 
-export default About
+export default About;
 
 export const query = graphql`
-  query AboutQuery {
-    about: datoCmsAboutPage {
+  query ServicesList {
+    __typename
+    allDatoCmsService(sort: {fields: title}) {
+      nodes {
+        id
+        list
+        title
+        slug
+        preview {
+          url
+        }
+      }
+    }
+    allDatoCmsProduct(sort: {fields: title}) {
+      nodes {
+        id
+        list
+        title
+        slug
+        preview {
+          url
+        }
+      }
+    }
+    datoCmsAboutPage {
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
       title
       subtitle
       photo {
-        fluid(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+        fluid(maxWidth: 600, imgixParams: {fm: "jpg", auto: "compress"}) {
           ...GatsbyDatoCmsSizes
         }
       }
@@ -47,4 +81,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

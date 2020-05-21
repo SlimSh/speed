@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Stefano Verna <s.verna@datocms.com>",
   "dependencies": {
+    "bootstrap-sass": "^3.4.1",
     "dotenv": "^8.1.0",
     "gatsby": "^2.18.8",
     "gatsby-image": "^2.2.34",
@@ -18,6 +19,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.0",
+    "react-markdown": "^4.3.1",
     "react-masonry-component": "^6.2.1",
     "react-slick": "^0.25.2",
     "slick-carousel": "^1.8.1"
