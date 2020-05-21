@@ -13,7 +13,7 @@ const TopBlock = ({ text: { pretext, title } }: IProps) => {
           {title}
           <strong>{pretext}</strong>
         </h1>
-        <img src={'/static/images/sc.png'} className={style.spImg}/>
+        <img src={'https://www.datocms-assets.com/21753/1590090010-sc.png'} className={style.spImg}/>
         <div className={style.module}>
           <div className={style.map}>
             <h4></h4>

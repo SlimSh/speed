@@ -78,7 +78,7 @@ const TemplateWrapper = (props: any) => {
                 <div className='sidebar__top'>
                   <h6 className='sidebar__title'>
                     <Link to='/'>
-                      <img src={'/static/images/logo.png'} />
+                      <img src={'https://www.datocms-assets.com/21753/1590090007-logo.png'} />
                     </Link>
                   </h6>
                   <ul className='sidebar__menu'>

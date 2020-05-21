@@ -1,4 +1,4 @@
-@import "../../../styles/variables/colors.sass";
+@import '../../../styles/variables/colors.sass';
 :local {
   .wrapper {
     padding: 20px;
@@ -24,19 +24,19 @@
         position: absolute;
         left: 0px;
         top: 0px;
-        font-family: "Bankir";
+        font-family: 'Bankir';
         font-size: 40px;
         font-weight: 100;
         color: black;
         text-align: center;
         z-index: 2;
 
-      @media only screen and (max-width: 900px) {
-        position: relative;
-      }
+        @media only screen and (max-width: 900px) {
+          position: relative;
+        }
         strong {
           display: block;
-          font-family: "Acrom";
+          font-family: 'Acrom';
           font-size: 26px;
         }
       }
@@ -86,7 +86,7 @@
               border-radius: 50%;
               position: absolute;
               cursor: pointer;
-              background-image: url("/static/images/arrow.svg");
+              background-image: url('https://www.datocms-assets.com/21753/1590090006-arrow.svg');
               background-repeat: no-repeat;
               background-position: center;
               background-size: 12px;
