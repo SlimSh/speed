@@ -5,6 +5,7 @@ import {StaticQuery, graphql} from 'gatsby';
 import {HelmetDatoCms} from 'gatsby-source-datocms';
 import MyLink from '../components/UI/Link/index';
 import LocationService from '../utils/locations';
+const style = require('./style.scss');
 
 import '../styles/index.sass';
 import TopBlock from '../components/UI/Top';
@@ -15,9 +16,26 @@ const TemplateWrapper = (props: any) => {
   return (
     <StaticQuery
       query={graphql`
-        query LayoutQuery {
+        query LayoutQuery { 
+          allDatoCmsWork(sort: {fields: [position], order: ASC}) {
+            edges {
+              node {
+                id
+                title
+                slug
+                excerpt
+                coverImage {
+                  fluid(maxWidth: 450, imgixParams: {fm: "jpg", auto: "compress"}) {
+                    ...GatsbyDatoCmsSizes
+                  }
+                }
+              }
+            }
+          }
           datoCmsHome {
             topBlock
+            phone
+            email
           }
           datoCmsSite {
             globalSeo {
@@ -52,6 +70,9 @@ const TemplateWrapper = (props: any) => {
         <div className={`container ${showMenu ? 'is-open' : ''}`}>
           <div className='container__mobile-header'>
             <div className='mobile-header'>
+              <div className='mobile-header__logo'>
+                <Link to='/'><img src={'https://www.datocms-assets.com/21753/1590090007-logo.png'} /></Link>
+              </div>
               <div className='mobile-header__menu'>
                 <a
                   href='#'
@@ -60,9 +81,6 @@ const TemplateWrapper = (props: any) => {
                     setShowMenu(!showMenu);
                   }}
                 />
-              </div>
-              <div className='mobile-header__logo'>
-                <Link to='/'>{data.datoCmsSite.globalSeo.siteName}</Link>
               </div>
             </div>
           </div>
@@ -74,6 +92,7 @@ const TemplateWrapper = (props: any) => {
             className={`containter__top__slider containter__top__slider--${LocationService.getCssPrefix()}`}
           >
             <div className='container__sidebar'>
+            <div className='close' onClick={() => setShowMenu(false)}></div>
               <div className='sidebar'>
                 <div className='sidebar__top'>
                   <h6 className='sidebar__title'>
@@ -104,22 +123,37 @@ const TemplateWrapper = (props: any) => {
                     </li>
                   </ul>
                 </div>
-                <p className='sidebar__social'>
-                  {data.allDatoCmsSocialProfile.edges.map(({node: profile}: any) => (
-                    <a
-                      key={profile.profileType}
-                      href={profile.url}
-                      target='blank'
-                      className={`social social--${profile.profileType.toLowerCase()}`}
-                    >
-                      {' '}
+                <div className={style.menuContact}>
+                  <div className={`${style.phone} ${style.item}`}>
+                    <a href={`tel: ${data.datoCmsHome.phone}`}>
+                    {data.datoCmsHome.phone}
+
                     </a>
-                  ))}
-                </p>
+                  </div>
+                  <div className={`${style.email} ${style.item}`}>
+                  <a href={`mailto: ${data.datoCmsHome.email}`}>
+                    {data.datoCmsHome.email}
+
+                    </a>
+                  </div>
+                  <div className='sidebar__social'>
+                    {data.allDatoCmsSocialProfile.edges.map(({node: profile}: any) => (
+                      <a
+                        key={profile.profileType}
+                        href={profile.url}
+                        target='blank'
+                        className={`social social--${profile.profileType.toLowerCase()}`}
+                      >
+                        {' '}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                
               </div>
             </div>
             {LocationService?.location?.pathname === '/' && (
-              <TopBlock text={data.datoCmsHome.topBlock} />
+              <TopBlock text={data.datoCmsHome.topBlock} list={data.allDatoCmsWork.edges.map((item: any) => item.node)}/>
             )}
           </div>
 

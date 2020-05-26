@@ -46,6 +46,14 @@
     margin-left: 50px;
     border-bottom: none;
     border-top: none;
+    
+    @media only screen and (max-width: 560px) {
+      flex-direction: row;
+      width: 80%;
+      margin: 0px;
+      padding: 20px;
+      border: none;
+    }
     &::before,
     &::after {
       content: "";
@@ -64,6 +72,7 @@
       position: relative;
       box-shadow: 0px 0px 10px white;
       transition: all 1s;
+      
       &:hover, &.active {
         box-shadow: none;
         background: $pink;
@@ -93,6 +102,9 @@
     font-size: 375px;
     color: #5f0f09;
     z-index: 1;
+    @media only screen and (max-width: 900px) {
+      display: none;
+    }
     &::after {
       content: "";
       display: block;

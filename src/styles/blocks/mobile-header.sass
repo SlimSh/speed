@@ -1,9 +1,17 @@
 .mobile-header
-  display: flex
-  padding: 20px 0
-  margin: 0 15px
+  display: flex;
+  padding: 20px 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: #1b1b1b;
 
 .mobile-header__menu
+  background: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 10px;
+  border-radius: 50%;
   a
     display: inline-block
     width: 20px
@@ -14,12 +22,11 @@
     background-size: contain
 
 .mobile-header__logo
-  flex: 1
-  text-align: right
-
   a
     font-size: 16px
     text-transform: uppercase
     font-weight: bold
     text-decoration: none
     color: $dark-body-color
+    height: 36px;
+    display: block;

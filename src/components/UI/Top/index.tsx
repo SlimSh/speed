@@ -1,11 +1,22 @@
 import React from "react";
+import { Link } from "gatsby";
 const style = require("./style.scss");
 
 interface IProps {
   text: any;
+  list: any;
 }
 
-const TopBlock = ({ text: { pretext, title } }: IProps) => {
+const TopBlock = ({ text: { pretext, title }, list }: IProps) => {
+  const [active, setActive] = React.useState(0)
+  const increment = () => {
+    setActive(active === (list.length - 1) ? 0 : active + 1)
+  }
+  
+  const decriment = () => {
+    setActive(active === 0 ? list.length - 1 : active - 1)
+  }
+  const item = list[active];
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
@@ -20,11 +31,12 @@ const TopBlock = ({ text: { pretext, title } }: IProps) => {
           </div>
           <div className={style.galery}>
            <div className={style.preview}>
-              <img src='https://www.datocms-assets.com/604/1481206679-flyer1.jpg?auto=compress%2Cformat&fm=jpg' alt=""/>
+             <Link to={`/works/${item.slug}`}><img src={item.coverImage.fluid.src} alt=""/></Link>
+              
           </div>
             <div className={style.control}>
-              <div className={style.left}/>
-              <div className={style.right}/>
+              <div className={style.left} onClick={decriment}/>
+              <div className={style.right} onClick={increment}/>
             </div>
           </div>
         </div>
