@@ -39,6 +39,7 @@ const ServicesModule = ({ services }: IProps) => {
         <h3>Услуги</h3>
       </div>
       <div className={"services_wrapper"}>{services.map(ServiceItem)}</div>
+      <a href={'/services'} className={style.link}>Перейти в услуги</a>
     </div>
   );
 };

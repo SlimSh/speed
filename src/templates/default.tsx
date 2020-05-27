@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'gatsby';
 import {StaticQuery, graphql} from 'gatsby';
 import {HelmetDatoCms} from 'gatsby-source-datocms';
+import Markdown from 'react-markdown';
 import MyLink from '../components/UI/Link/index';
 import LocationService from '../utils/locations';
 const style = require('./style.scss');
@@ -13,6 +14,7 @@ import TopBlock from '../components/UI/Top';
 const TemplateWrapper = (props: any) => {
   const [showMenu, setShowMenu] = useState(false);
   const {children} = props;
+  
   return (
     <StaticQuery
       query={graphql`
@@ -51,7 +53,7 @@ const TemplateWrapper = (props: any) => {
             }
             introTextNode {
               childMarkdownRemark {
-                html
+                rawMarkdownBody
               }
             }
             copyright
@@ -158,13 +160,11 @@ const TemplateWrapper = (props: any) => {
           </div>
 
           <div className='container__body'>{children}</div>
-          <div className='footer'>
+          <div className={style.footer}>
             {' '}
-            <div
+            <Markdown
               className='sidebar__intro'
-              dangerouslySetInnerHTML={{
-                __html: data.datoCmsHome.introTextNode.childMarkdownRemark.html
-              }}
+              source={data.datoCmsHome.introTextNode.childMarkdownRemark.rawMarkdownBody}
             />
             <div className='sidebar__copyright'>{data.datoCmsHome.copyright}</div>
           </div>

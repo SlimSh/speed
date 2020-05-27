@@ -2,7 +2,6 @@
   .header {
     background: url('https://www.datocms-assets.com/21753/1590090026-tria.svg');
     background-repeat: repeat;
-    // background-size: 100% 100%;
     width: 100%;
     height: 200px;
     display: flex;
@@ -16,6 +15,25 @@
       font-size: 72px;
       text-align: center;
       font-family: "Bankir";
+    }
+  }
+  .link {
+    text-align: center;
+    font-family: 'Acrom';
+    font-size: 18px;
+    text-decoration: none;
+    color: #f4f4f4;
+    background: #4a0905;
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: all .5s;
+    &:hover {
+      color: white;
+      background: #921009;
     }
   }
 }
