@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Markdown from 'react-markdown';
 const style = require('./styles/post.scss');
 
 interface IImage {
@@ -35,18 +36,30 @@ export default class Post extends Component<IProps, IState> {
   }
 
   render() {
-    const {title, description, teg} = this.props;
-    const {image} = this.state;
+    const { title, description, teg, content } = this.props;
+    const { image } = this.state;
     return (
       <div className={style.wrapper}>
-        <img className={style.preview} src={image} />
-        <div className={style.header}>
-          <div className={style.content}>
-            <h1>{title}</h1>
-            <div className={style.tags}>{teg.split(',').map(this.renderTeg)}</div>
-            <p>{description}</p>
+        <div className={style.top}>
+          <img className={style.preview} src={image} />
+          <div className={style.header}>
+            <div className={style.content}>
+              <h1>{title}</h1>
+              <div className={style.tags}>{teg.split(',').map(this.renderTeg)}</div>
+              <p>{description}</p>
+            </div>
+            <div className={style.galery}>{this.galery.map(this.renderGaleryItem)}</div>
           </div>
-          <div className={style.galery}>{this.galery.map(this.renderGaleryItem)}</div>
+        </div>
+
+        <div className={style.post}>
+          <article className={'sheet'}>
+            <div className={'sheet__body'}>
+              <Markdown source={content} />
+
+            </div>
+
+          </article>
         </div>
       </div>
     );
@@ -62,7 +75,7 @@ export default class Post extends Component<IProps, IState> {
   };
 
   private handleImage = (image: string) => () => {
-    this.setState({image});
+    this.setState({ image });
   };
   private renderTeg = (item: string, key: number) => {
     return (
