@@ -104,11 +104,6 @@ const TemplateWrapper = (props: any) => {
                   </h6>
                   <ul className='sidebar__menu'>
                     <li>
-                      <Link to='/'>
-                        <MyLink text={'Онлайн заказ'} />
-                      </Link>
-                    </li>
-                    <li>
                       <Link to='/services'>
                         <MyLink text={'Услуги'} />
                       </Link>

@@ -3,9 +3,9 @@ import {graphql} from 'gatsby';
 import {HelmetDatoCms} from 'gatsby-source-datocms';
 import Img from 'gatsby-image';
 import DefaultLayout from '../templates/default';
-import Card from '../components/UI/Card';
 import ServicesList from '../components/ServicesList';
 import LocationService from '../utils/locations';
+import CallBack from '../components/Calback';
 
 const About = ({
   location,
@@ -15,6 +15,7 @@ const About = ({
   return (
     <DefaultLayout>
       <ServicesList list={services.nodes} title={'Услуги'} theme={'dark'} />
+      <CallBack />
       <ServicesList list={products.nodes} title={'Наша продукция'} theme={'light'} />
       <article className='sheet'>
         <HelmetDatoCms seo={about.seoMetaTags} />

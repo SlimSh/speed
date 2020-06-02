@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 import Popup from "../UI/Popup";
+import FormMessage from './FormMessage';
 const style = require("./style.scss");
 
 interface IState {
@@ -32,18 +33,7 @@ export default class CallBack extends React.Component<any, IState> {
                 open={this.state.mail}
                 className={style.popup}
               >
-                <div>Отправить заявку</div>
-              </Popup>
-              <Button
-                title={"Заказать звонок"}
-                onClick={this.handleOpenPhone}
-              />
-              <Popup
-                onClose={this.handleOpenPhone}
-                open={this.state.phone}
-                className={style.popup}
-              >
-                <div>Заказать звонок</div>
+                <FormMessage />
               </Popup>
             </div>
             <div>

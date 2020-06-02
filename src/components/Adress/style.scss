@@ -1,0 +1,54 @@
+$dc: #de948f;
+$hc: white;
+
+:local {
+  .wrapper {
+    position: absolute;
+    z-index: 2;
+    background: #761c15;
+    padding: 30px;
+    color: $dc;
+    font-family: 'Acrom';
+    left: 10%;
+    top: 10%;
+    border-radius: 10px;
+    box-shadow: 0px 19px 18px rgba(0, 0, 0, 0.5);
+    @media screen and (max-width: 899px) {
+      padding: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      top: 0px;
+      left: 0px;
+      border-radius: 0px;
+      justify-content: space-between;
+    }
+    
+    @media screen and (max-width: 550px) {
+      flex-direction: column;
+    }
+
+    .item {
+      margin-bottom: 20px;
+
+      h3 {
+        
+      font-family: Bankir;
+      font-size: 32px;
+      color: $dc
+      }
+      a {
+        color: $dc;
+        transition: all .3s;
+        &:hover {
+          color: $hc;
+        }
+      }
+    }
+}
+
+
+
+
+
+}
