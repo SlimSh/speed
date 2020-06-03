@@ -1,20 +1,22 @@
 import React from 'react';
-import {graphql} from 'gatsby';
-import {HelmetDatoCms} from 'gatsby-source-datocms';
+import { graphql } from 'gatsby';
+import { HelmetDatoCms } from 'gatsby-source-datocms';
 import Img from 'gatsby-image';
 import DefaultLayout from '../templates/default';
 import ServicesList from '../components/ServicesList';
 import LocationService from '../utils/locations';
+import Delivery from '../components/Delivery';
 import CallBack from '../components/Calback';
 
 const About = ({
   location,
-  data: {allDatoCmsService: services, allDatoCmsProduct: products, datoCmsAboutPage: about}
+  data: { allDatoCmsService: services, allDatoCmsProduct: products, datoCmsAboutPage: about, allDatoCmsDelivery: deliverys }
 }: any) => {
   LocationService.location = location;
   return (
     <DefaultLayout>
       <ServicesList list={services.nodes} title={'Услуги'} theme={'dark'} />
+      <Delivery deliverys={deliverys.edges} />
       <CallBack />
       <ServicesList list={products.nodes} title={'Наша продукция'} theme={'light'} />
       <article className='sheet'>
@@ -61,6 +63,20 @@ export const query = graphql`
         slug
         preview {
           url
+        }
+      }
+    }
+    allDatoCmsDelivery {
+      edges {
+        node {
+          description
+          id
+          price
+          time
+          title
+          image {
+            url
+          }
         }
       }
     }
