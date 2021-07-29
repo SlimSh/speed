@@ -19,8 +19,8 @@ interface IProps {
 export default function index({ deliverys }: IProps) {
   const [active, setActive] = useState(0);
   const handleMenu = (i: number) => () => setActive(i);
-  const { 
-    id, 
+  const {
+    id,
     price, description, time, image: { url } } = deliverys[active]?.node;
   return (
     <div className={style.wrapper}>
