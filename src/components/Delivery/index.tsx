@@ -15,6 +15,7 @@ interface IDelivery {
 interface IProps {
   deliverys: { node: IDelivery }[];
 }
+
 export default function index({ deliverys }: IProps) {
   const [active, setActive] = useState(0);
   const handleMenu = (i: number) => () => setActive(i);
