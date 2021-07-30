@@ -20,3 +20,4 @@ echo "SHOW ME THAT MESSAGE POST post-receive"
 #         echo ""
 #         exit 0
 # fi
+test
