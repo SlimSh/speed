@@ -6,12 +6,12 @@ import { graphql } from 'gatsby';
 import Adres from './../components/Adress';
 const style = require('./styles/contacts.scss')
 
-const Contacts = ({ location, data: {datoCmsHome: home} }: any) => {
+const Contacts = ({ location, data: { datoCmsHome: home } }: any) => {
   LocationService.location = location;
   return (
     <DefaultLayout>
       <div className={style.map}>
-        <Adres {...home}/>
+        <Adres {...home} />
         <YMaps>
           <Map
             width='100%'
@@ -29,7 +29,7 @@ const Contacts = ({ location, data: {datoCmsHome: home} }: any) => {
               properties={{
                 balloonContentTitle: home.adres,
                 balloonContentBody:
-                home.adres,
+                  home.adres,
               }}
             />
           </Map>

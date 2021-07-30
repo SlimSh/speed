@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, graphql} from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import Masonry from 'react-masonry-component';
 import Img from 'gatsby-image';
 import DefaultLayout from '../templates/default';
@@ -9,7 +9,7 @@ import Why from '../components/Why/Why';
 import CallBack from '../components/Calback';
 import LocationService from '../utils/locations';
 
-const IndexPage = ({data, location}: any) => {
+const IndexPage = ({ data, location }: any) => {
   LocationService.location = location;
   return (
     <DefaultLayout>
@@ -17,7 +17,7 @@ const IndexPage = ({data, location}: any) => {
       <Why list={data.datoCmsHome.why} />
       <CallBack />
       <Masonry className='showcase'>
-        {data.allDatoCmsWork.edges.map(({node: work}: any) => (
+        {data.allDatoCmsWork.edges.map(({ node: work }: any) => (
           <div key={work.id} className='showcase__item'>
             <figure className='card'>
               <Link to={`/works/${work.slug}`} className='card__image'>
