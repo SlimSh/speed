@@ -37,7 +37,7 @@ const FormMessage = () => {
           Заявка
         </span>
         <div className="wrap-input2 validate-input" data-validate="Name is required">
-          <input className="input2" type="text" name="name" onChange={handleChangeName} value={name}/>
+          <input className="input2" type="text" name="name" onChange={handleChangeName} value={name} />
           <span className={`focus-input2 ${name && `hide-label`}`} data-placeholder="Имя"></span>
         </div>
         <div className="wrap-input2 validate-input" data-validate="Valid email is required: ex@abc.xyz">
@@ -46,7 +46,7 @@ const FormMessage = () => {
         </div>
         <div className="wrap-input2 validate-input" data-validate="Valid email is required: 79085058038">
           <InputMask mask="+9 999 999 99 99" value={phone} onChange={handleChangePhone}>
-            {() => <input className="input2" type="text" name="phone"  pattern="[0-9]*" />}
+            {() => <input className="input2" type="text" name="phone" pattern="[0-9]*" />}
           </InputMask>
           <span className="focus-input2" data-placeholder="Телефон" />
         </div>
@@ -56,7 +56,7 @@ const FormMessage = () => {
         </div>
         <div className="container-contact2-form-btn">
           <div className="wrap-contact2-form-btn">
-            <div className={`contact2-form-bgbtn ${!validateForm() && 'disabled'}`}/>
+            <div className={`contact2-form-bgbtn ${!validateForm() && 'disabled'}`} />
             <button className="contact2-form-btn" disabled={!validateForm()} onClick={sendForm}>Отправить</button>
           </div>
         </div>
