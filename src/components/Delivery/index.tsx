@@ -13,8 +13,7 @@ interface IDelivery {
 }
 
 interface IProps {
-  deliverys: {
-    node: IDelivery }[];
+  deliverys: { node: IDelivery }[];
 }
 
 export default function index({ deliverys }: IProps) {
